@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>shirahama</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <p>yee</p>
+    {% load static %}
+    <script type="text/javascript" src="{% static "/js/jquery-3.5.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "/js/jquery.rwdImageMaps.js" %}"></script>
+    <img src="{% static "/pics/shirahama1.png" %}" usemap="#ImageMap" alt=""/>
+    <map name="ImageMap">
+        <area class="image-num" shape="poly" coords="384,211,463,210,464,261,384,262,384,262" href="#" alt="1" title="1"/>
+        <area class="image-num" shape="poly" coords="468,209,559,210,559,261,469,259,469,259" href="#" alt="2" title="2"/>
+        <area class="image-num" shape="poly" coords="564,230,590,230,590,261,563,261,563,261" href="#" alt="3" title="3"/>
+        <area class="image-num" shape="poly" coords="593,210,593,261,676,260,674,229,663,229,661,210,661,210" href="#" alt="4" title="4"/>
+        <area class="image-num" shape="poly" coords="692,207,756,207,755,260,694,260,684,260,682,229,695,229,695,229" href="#" alt="5" title="5"/>
+        <area class="image-num" shape="poly" coords="284,30,379,32,378,174,286,173,286,173" href="#" alt="6" title="6"/>
+        <area class="image-num" shape="poly" coords="696,28,1024,31,1021,170,693,173,694,173" href="#" alt="7" title="7"/>
+        <area class="image-num" shape="poly" coords="382,29,535,31,537,173,382,170,393,169" href="#" alt="8" title="8"/>
+        <area class="image-num" shape="poly" coords="536,29,693,29,693,173,538,171,541,171" href="#" alt="9" title="9"/>
+        <area class="image-num" shape="poly" coords="69,26,215,29,213,91,68,90,69,89" href="#" alt="10" title="10"/>
+        <area class="image-num" shape="poly" coords="63,303,246,306,249,825,65,823,69,817" href="#" alt="11" title="11"/>
+        <area class="image-num" shape="poly" coords="893,173,1024,170,1024,260,894,258,894,258" href="#" alt="12" title="12"/>
+        <area class="image-num" shape="poly" coords="888,261,1023,262,1021,415,892,415,890,415" href="#" alt="13" title="13"/>
+        <area class="image-num" shape="poly" coords="892,421,1020,423,1021,517,891,516,890,423" href="#" alt="14" title="14"/>
+      </map>
+    <script>
+        $('img[usemap]').rwdImageMaps();
+        jQuery( '.image-num' ).on( 'click', function() {
+            var result =confirm( jQuery( this ).attr( 'title' )+'でよろしいですか?' );
+            if(result){
+                location.href='/accounts/index2';
+            }
+        });
+    </script>
+</body>
+</html>

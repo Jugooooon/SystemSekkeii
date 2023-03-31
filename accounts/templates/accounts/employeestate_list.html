@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>position</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+  <body class=wrapper">
+    {% block extrahead %}
+        <link href="{% static 'test.css' %}" rel="stylesheet">
+    {% endblock %}
+    <header class="Head"></header>
+    <main class="Main">
+      <div class="Top">
+<a href="{% url 'index2' %}">ホームページ</a>
+<a href="{% url 'rooms' %}">検索前に戻る</a>
+
+<form action="" method="get">
+    <input name="name" value="{{ request.GET.name }}" type="text">
+    <button type="submit">名前検索する</button>
+</form>
+
+<form action="" method="get">
+    <input name="state" value="{{ request.GET.state }}" type="text">
+    <button type="submit">状態検索する</button>
+</form>
+
+<form action="" method="get">
+    <input name="room" value="{{ request.GET.room }}" type="text">
+    <button type="submit">部屋検索する</button>
+</form>
+
+    <p>検索したい内容：名前、状態、部屋を入力する<br>白浜だけでも可能</p>
+    <p>0:入力なし 1:出勤 2:社用外出 3:私用外出 4:遅刻 5:早退 6:休み 7:午前休 8:午後休 9:テレワーク 10:退社 11:出張</p>
+
+  <div class =Disp>
+     <table border="1">
+        <tr>
+            <th>名前</th>
+            <th>状態</th>
+            <th>場所</th>
+        </tr>
+        {% for EmployeeState in　object_list%}
+        <tr>
+            <td>{{ EmployeeState.userID }}</td>
+            {% if EmployeeState.EMPstate == "0" %}<td>入力なし</td>{% endif %}　
+            {% if EmployeeState.EMPstate == "1" %}<td>出勤</td>{% endif %}
+            {% if EmployeeState.EMPstate == "2" %}<td>社用外出</td>{% endif %}
+            {% if EmployeeState.EMPstate == "3" %}<td>私用外出</td>{% endif %}
+            {% if EmployeeState.EMPstate == "4" %}<td>遅刻</td>{% endif %}
+            {% if EmployeeState.EMPstate == "5" %}<td>早退</td>{% endif %}
+            {% if EmployeeState.EMPstate == "6" %}<td>休み</td>{% endif %}
+            {% if EmployeeState.EMPstate == "7"%}<td>午前休</td>{% endif %}
+            {% if EmployeeState.EMPstate == "8" %}<td>午後休</td>{% endif %}
+            {% if EmployeeState.EMPstate == "9" %}<td>テレワーク</td>{% endif %}
+            {% if EmployeeState.EMPstate == "10" %}<td>退社</td>{% endif %}
+            {% if EmployeeState.EMPstate == "11" %}<td>出張</td>{% endif %} 
+            {% if EmployeeState.RoomID == "0" %}<td>入力なし</td>
+            {% else %}<td>{{ EmployeeState.RoomID }}号室</td>{% endif %}
+        </tr>
+        {% endfor %}
+        
+      </table>
+    </div>
+ </div>
+        </main>
+        <footer class="Foot"></footer>
+ </body>
+</html>

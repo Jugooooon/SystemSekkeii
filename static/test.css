@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.Foot {
+    background-color: #003DA5;
+    width: 100vw;
+    height: 15vh;
+    position: static;
+}
+
+.Main {
+    background-color: #FFFFFF;
+    width: 100vw;
+    min-height: 62vh;
+    position: static;
+    padding-top: 5vh;
+    margin-bottom: 10vh;
+}
+
+.Head {
+    background-color: #FF9900;
+    width: 100vw;
+    height: 20vh;
+    position: static;
+}
+
+.Top {
+    font-family: 'Lato', sans-serif;
+}
+
+.head-Log {
+    text-align: center;
+    font-size: 200%;
+}
+.Mid-Log {
+    text-align: center;
+    font-size: 150%;
+}
+.Fot-Log {
+    text-align: center;
+    font-size: 100%;
+}

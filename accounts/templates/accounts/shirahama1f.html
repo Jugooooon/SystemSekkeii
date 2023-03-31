@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>shirahama1F</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class=wrapper">
+    {% block extrahead %}
+        <link href="{% static 'test.css' %}" rel="stylesheet">
+    {% endblock %}
+    <header class="Head"></header>
+    <main class="Main">
+      <div class="Top">
+        <a href="{% url 'index2' %}">ホームページ</a><br>
+        <a href="{% url 'shirahama2f' %}">白浜オフィス2F</a><br>
+         <form name="room" id="room" method="POST">
+            <h1>白浜オフィス1F</h1>
+            <table border="0">
+              <tr> <td align="right"><b> 入力した場所：</b></td>
+              <td><input type="text" name="get_room_name" size="30" maxlength="20" value="0" required> <input type="submit" name="statebuttom"></td>
+              </tr>
+            </table>
+            {% load static %}
+            {% csrf_token %}
+         <img src="{% static "/pics/shirahama1.jpg" %}" usemap="#ImageMap" alt="" />
+         <map name="ImageMap">
+            <area shape="poly" coords="66,29,65,91,214,89,215,30,215,30" nohref alt="1" onclick="getname(this.alt)"/>
+            <area shape="poly" coords="283,29,380,29,379,173,284,171,286,171" nohref alt="2" onclick="getname(this.alt)"/>
+            <area shape="poly" coords="381,29,537,29,537,173,381,173,382,173" nohref alt="3"  onclick="getname(this.alt)"/>
+            <area shape="poly" coords="538,30,693,31,694,173,536,173,538,173" nohref alt="4" onclick="getname(this.alt)"/>
+            <area shape="poly" coords="696,26,1021,28,1021,175,696,177,696,176" nohref alt="5" onclick="getname(this.alt)"/>
+            <area shape="poly" coords="61,303,248,305,249,826,64,824,64,824" nohref alt="6" onclick="getname(this.alt)"/>
+            <area shape="poly" coords="381,207,757,207,756,261,381,261,381,261" nohref alt="7" onclick="getname(this.alt)"/>
+
+            <script>
+             function getname(alt){
+               document.room.get_room_name.value = alt;
+             }
+            </script>
+          </map>
+          </form>
+          <div class =hyouji>
+           <h3>全員の状態と位置</h3>
+           <p>社外は0</p>
+             <table border="1">
+                <tr>
+                    <th>名前</th>
+                    <th>状態</th>
+                    <th>場所</th>
+                </tr>
+                {% for EmployeeState in data %}
+                <tr>
+                    <td>{{ EmployeeState.userID }}</td>
+                    {% if EmployeeState.EMPstate == "0" %}<td>入力なし</td>{% endif %}　
+                    {% if EmployeeState.EMPstate == "1" %}<td>出勤</td>{% endif %}
+                    {% if EmployeeState.EMPstate == "2" %}<td>社用外出</td>{% endif %}
+                    {% if EmployeeState.EMPstate == "3" %}<td>私用外出</td>{% endif %}
+                    {% if EmployeeState.EMPstate == "4" %}<td>遅刻</td>{% endif %}
+                    {% if EmployeeState.EMPstate == "5" %}<td>早退</td>{% endif %}
+                    {% if EmployeeState.EMPstate == "6" %}<td>休み</td>{% endif %}
+                    {% if EmployeeState.EMPstate == "7"%}<td>午前休</td>{% endif %}
+                    {% if EmployeeState.EMPstate == "8" %}<td>午後休</td>{% endif %}
+                    {% if EmployeeState.EMPstate == "9" %}<td>テレワーク</td>{% endif %}
+                    {% if EmployeeState.EMPstate == "10" %}<td>退社</td>{% endif %}
+                    {% if EmployeeState.EMPstate == "11" %}<td>出張</td>{% endif %} 
+                    {% if EmployeeState.RoomID == "0" %}<td>入力なし</td>
+                    {% else %}<td>{{ EmployeeState.RoomID }}号室</td>{% endif %}
+                </tr>
+                {% endfor %}
+        
+              </table>
+            </div>
+          </div>
+        </main>
+        <footer class="Foot"></footer>
+    </body>
+</html>

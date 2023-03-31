@@ -1,0 +1,42 @@
+
+    <!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ログイン後トップページ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="wrapper">
+    {% block extrahead %}
+        <link href="{% static 'test.css' %}" rel="stylesheet">
+    {% endblock %}
+    <header class="Head"></header>
+    <main class="Main">
+      <div class="Top">
+ <a href="{% url 'index2' %}">ホームページ</a>
+  <center><br><br>
+     <h3> 状態入力 </h3>
+       <form id="STATE" method="POST">
+         {% csrf_token %}
+         <input type="radio" name="state" value="0">入力なし
+         <input type="radio" name="state" value="1">出勤
+         <input type="radio" name="state" value="2">社用外出
+         <input type="radio" name="state" value="3">私用外出<br>
+         <input type="radio" name="state" value="4">遅刻
+         <input type="radio" name="state" value="5">早退
+         <input type="radio" name="state" value="6">休み
+         <input type="radio" name="state" value="7">午前休
+         <input type="radio" name="state" value="8">午後休<br>
+         <input type="radio" name="state" value="9">テレワーク
+         <input type="radio" name="state" value="10">退社
+         <input type="radio" name="state" value="11">出張
+         <input type="submit" name="statebuttom">送信
+       </form>
+
+  </center>
+</div>
+    </main>
+    <footer class="Foot"></footer>
+</body>
+</html>

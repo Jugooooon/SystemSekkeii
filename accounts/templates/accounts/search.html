@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body class="wrapper">
+    {% block extrahead %}
+        <link href="{% static 'test.css' %}" rel="stylesheet">
+    {% endblock %}
+    <header class="Head"></header>
+    <main class="Main">
+      <div class="Top">
+    <div class="login">
+        <form action="#" method="post" class="Mid-Log">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+                <tr>
+                    <td colspan='2'><input type="submit" value="Submit" class="Fot-Log"></td>
+                </tr>
+            </table>
+        </form>
+        <strong class="Mid-Log">
+            状態->{{searchResult}}<br />
+            場所->{{placeResult}}<br />
+            <a href="{% url 'index2' %}">戻る</a><br>
+        </strong>
+    </div>
+      </div>
+    </main>
+    <footer class="Foot"></footer>
+</body>
+</html>

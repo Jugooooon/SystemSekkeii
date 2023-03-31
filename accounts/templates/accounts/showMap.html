@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body class="wrapper">
+    {% block extrahead %}
+        <link href="{% static 'test.css' %}" rel="stylesheet">
+    {% endblock %}
+    <header class="Head"></header>
+    <main class="Main">
+      <div class="Top">
+    <form name="room" id="room" method="post">
+        <tr>
+            <td align="right"><b> 入力した場所：</b></td>
+            <td><input type="text" name="get_room_name" size="30" maxlength="20" value="0" required> <input type="submit" name="statebuttom"></td>
+        </tr>
+        {%load static%}
+        {% csrf_token %}
+        <img src={{imgURL}} usemap="#ImageMap" alt="" />
+        <map name="ImageMap">
+            <script>
+                function getname(alt) {
+                    document.room.get_room_name.value = alt;
+                }
+            </script>
+        </map>
+    </form>
+</div>
+    </main>
+    <footer class="Foot"></footer>
+</body>
+</html>

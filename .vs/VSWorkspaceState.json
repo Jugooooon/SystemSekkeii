@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\accounts",
+    "\\accounts\\templates",
+    "\\accounts\\templates\\accounts",
+    "\\myproject",
+    "\\static",
+    "\\static\\pics"
+  ],
+  "SelectedNode": "\\accounts\\views.py",
+  "PreviewInSolutionExplorer": false
+}

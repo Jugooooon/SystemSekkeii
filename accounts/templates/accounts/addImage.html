@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CREATE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="wrapper">
+{% block extrahead %}
+        <link href="{% static 'test.css' %}" rel="stylesheet">
+    {% endblock %}
+<header class="Head"></header>
+    <main class="Main">
+      <div class="Top">
+    <h1>Please Upload</h1>
+
+<form enctype="multipart/form-data" action="{% url 'addImage' %}" method="post">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="Upload">
+</form>
+</div>
+    </main>
+    <footer class="Foot"></footer>
+</body>
+</html>
